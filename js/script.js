@@ -54,7 +54,7 @@ $arrwoman=['замужем','в «гражданском браке»','разв
 $('input[name=sex]').change(function(){
 	$val=$(this).val();
 	$('#marital-status').html('<option></option>');
-	if($val=='мужской'){
+	if($val=='male'){
 		$arr=$arrman;
 	}else{
 		$arr=$arrwoman;
@@ -81,11 +81,13 @@ $('input[name=sex]').change(function(){
 function getOlder($cls){
 	var fulldate = new Date(); 
 	var thisyear = fulldate.getFullYear();
-	var thismonth = fulldate.getMonth();
+	var thismonth = fulldate.getMonth()+1;
 	var thisday = fulldate.getDate();
 	var datayear = parseInt($("#data-year").val());
 	var datamonth = parseInt($("#data-month").val());
 	var dataday = parseInt($("#data-day").val());
+	console.log(thismonth);
+	console.log(datamonth);
 
 	$correct='';
 	
@@ -94,10 +96,10 @@ function getOlder($cls){
 	}else{
 		if((thisyear-90) == datayear){
 			if(thismonth == datamonth){
-				if(thisday == dataday){
+				if(thisday <= dataday){
 					$correct=$cls;
 				}
-			}else if(thismonth > datamonth){
+			}else if(thismonth < datamonth){
 				$correct=$cls;
 			}
 			
@@ -143,7 +145,7 @@ $(document).ready(function() {
         var surnamelat = $("#surname-latin").val();
         var namelat = $("#name-latin").val();
 		var data = $("#data-day").val()+'.'+$("#data-month").val()+'.'+$("#data-year").val();
-        var sex = $("input[name=sex]:checked").val();
+        var sex = $("input[name=sex]:checked").data('val');
         var status = $("#marital-status").val();
         var edu = $("#education").val();
         var phone = $("#tel").val();
