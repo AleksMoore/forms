@@ -96,10 +96,10 @@ function getOlder($cls){
 	}else{
 		if((thisyear-90) == datayear){
 			if(thismonth == datamonth){
-				if(thisday <= dataday){
+				if(thisday >= dataday){
 					$correct=$cls;
 				}
-			}else if(thismonth < datamonth){
+			}else if(thismonth > datamonth){
 				$correct=$cls;
 			}
 			
