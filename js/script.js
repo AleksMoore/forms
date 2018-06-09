@@ -1,3 +1,5 @@
+// Транслит input
+
 function translit(startid,endid){
 var text=document.getElementById(startid).value;
 var transl=new Array();
@@ -43,11 +45,10 @@ var transl=new Array();
     document.getElementById(endid).value=result;
 }
 
-
+// Семейное положение
 
 $(document).ready(function(){
 	
-
 $arrman=['женат','в «гражданском браке»','разведен','холост','вдовец'];
 $arrwoman=['замужем','в «гражданском браке»','разведена','не замужем','вдова'];
 
@@ -61,10 +62,10 @@ $('input[name=sex]').change(function(){
 	}
 	for($i=0;$i<$arr.length;$i++){
 		$('#marital-status').append('<option value="'+$arr[$i]+'">'+$arr[$i]+'</option>');
-	}
-	
-	
+	}		
 });
+
+// Checkbox подтверждение
 	
 	var check = document.getElementById('agree');
 	var sendbtn = document.getElementById('submit');
@@ -74,9 +75,11 @@ $('input[name=sex]').change(function(){
 		
 	};
 	
-	
+// Mask для Моб. телефона
 		
    $("#tel").mask("+7(999) 999-9999");
+	
+// Дата рождения
    
 function getOlder($cls){
 	var fulldate = new Date(); 
@@ -125,7 +128,7 @@ $('.form__field-data select').change(function(){
 });
 
 
-
+// Отправка результата в Google Sheets
 
 $(document).ready(function() {
     $('#form').submit(function() {
